@@ -30,6 +30,8 @@ void push(Stack* stack, int item){
 
 int pop(Stack* stack){
 
+  if(!stack->head){ return -1; }
+
   Node* elem = stack->head;
 
   stack->head = elem->next;
