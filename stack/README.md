@@ -2,7 +2,7 @@
 # Stack
 
 ## Descrição
-Estrutura FILO (o primeiro a entrar é o último a sair), é uma estrutura usada para 
+Estrutura LIFO (o último a entrar é o primeiro a sair)
 
 ## Exemplos
 
