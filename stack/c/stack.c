@@ -8,12 +8,12 @@ typedef struct Node {
 } Node;
 
 typedef struct Stack {
-  int length;
+  int size;
   Node* head;
 } Stack;
 
 Stack createStack(){
-  Stack stack = { .head = NULL, .length=0 };
+  Stack stack = { .head = NULL, .size=0 };
   return stack;
 }
 
@@ -21,7 +21,7 @@ void push(Stack* stack, int item){
   Node* elem = (Node*) malloc(sizeof(Node));
   Node* prev_head = stack->head;
 
-  stack->length++;
+  stack->size++;
   elem->value = item;
   elem->next = prev_head;
 
@@ -35,7 +35,7 @@ int pop(Stack* stack){
   Node* elem = stack->head;
 
   stack->head = elem->next;
-  stack->length--;
+  stack->size--;
 
   int value = elem->value;
   free(elem);
@@ -43,8 +43,12 @@ int pop(Stack* stack){
   return value;
 }
 
+int peek(Stack* stack){
+  return stack->head->value;
+}
+
 void printStack(Stack* stack){
-  printf("Stack of length %d\n", stack->length);
+  printf("Stack of size %d\n", stack->size);
   Node *curr = stack->head;
   while(curr){
     printf("-> %d\n", curr->value);
@@ -61,6 +65,7 @@ int main(){
   push(&stack, 3);
   printStack(&stack);
 
+  printf("peek: %d\n", peek(&stack));
   printf("pop: %d\n", pop(&stack));
   printf("pop: %d\n", pop(&stack));
   printStack(&stack);

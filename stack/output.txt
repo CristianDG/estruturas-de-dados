@@ -1,0 +1,9 @@
+Stack of size 3
+-> 3
+-> 2
+-> 1
+peek: 3
+pop: 3
+pop: 2
+Stack of size 1
+-> 1

@@ -12,12 +12,12 @@ type Node[T any] struct {
 
 type Stack[T any] struct {
 	head *Node[T]
-	length uint
+	size uint
 }
 
 func (stack *Stack[T]) push(item T) {
 
-	stack.length++
+	stack.size++
 	older_head := stack.head
 
 	node := &Node[T]{value: item, next: older_head}
@@ -27,7 +27,7 @@ func (stack *Stack[T]) push(item T) {
 }
 
 func (stack *Stack[T]) pop() interface{} {
-	stack.length--
+	stack.size--
 	older_head := stack.head
 
 	if older_head == nil { return nil }
@@ -38,8 +38,12 @@ func (stack *Stack[T]) pop() interface{} {
 
 }
 
+func (stack *Stack[T]) peek() T {
+	return stack.head.value
+}
+
 func (stack *Stack[T]) print(){
-	fmt.Printf("Stack of length %d\n", stack.length)
+	fmt.Printf("Stack of size %d\n", stack.size)
 	curr := stack.head
 	for curr != nil {
 		fmt.Println("->", curr.value)
@@ -57,6 +61,7 @@ func main(){
 	stack.push(3)
 	stack.print()
 
+	fmt.Println("peek:", stack.peek())
 	fmt.Println("pop:", stack.pop())
 	fmt.Println("pop:", stack.pop())
 	stack.print()
